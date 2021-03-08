@@ -1,0 +1,109 @@
+
+
+.column.hover{
+  transform: scale(0.1);
+
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.column {
+  float: left;
+  width: 20%;
+  padding: 0 10px;
+  display:flex;
+  cursor: pointer;
+  flex-direction: column;
+  border-radius: 0px;
+  /* border: 1px solid; */
+  padding: 25px;
+  backface-visibility: hidden;
+  transform: translateZ(0);
+  transition:transform 0.25s ease-out;
+ 
+    /* image-resolution: 25px 20px; */
+    
+
+}
+.column img {
+  
+    max-width: 40%;
+    max-height: 40%;
+    
+}
+/* Remove extra left and right margins, due to padding */
+.row {margin: 0 -5px;}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Responsive columns */
+@media screen and (max-width: 600px) {
+  .column {
+    width: 100%;
+    display: block;
+    margin-bottom: 20px;
+  }
+}
+
+/* Style the counter cards */
+.card {
+  box-shadow: 0 11px 15px 0 rgba(81, 92, 88, 0.2);
+  padding: 16px;
+  text-align: center;
+  background-color: #f1f1f1;
+}
+.btnAppt{
+  background-color: rgb(51, 77, 64);
+  text-align: center;
+  color: white;
+  border-radius: 15px;
+  padding: 20ox;
+
+    border: none;
+    color: #FFFFFF;
+    text-align: center;
+    font-size: 15px;
+    padding: 2px;
+    width: 70px;
+    transition: all 0.5s;
+    cursor: pointer;
+    margin: 0px;
+  
+}
+
+.btnAppt span{
+
+ 
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    transition: 0.5s;
+
+  
+}
+
+.btnAppt span:after {
+  content: '\00bb';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
+
+.btnAppt:hover span {
+  padding-right: 25px;
+}
+
+.btnAppt:hover span:after {
+  opacity: 1;
+  right: 0;
+}
