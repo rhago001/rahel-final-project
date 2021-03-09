@@ -10,13 +10,28 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_28_201955) do
+ActiveRecord::Schema.define(version: 2021_03_09_051813) do
 
   create_table "appointments", force: :cascade do |t|
     t.integer "user_id"
     t.integer "trainer_id"
     t.string "date"
     t.string "time"
+  end
+
+  create_table "comments", force: :cascade do |t|
+    t.integer "trainer_id"
+    t.integer "post_id"
+    t.string "comment"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "posts", force: :cascade do |t|
+    t.integer "user_id"
+    t.string "post"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "reviews", force: :cascade do |t|

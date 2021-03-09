@@ -2,7 +2,6 @@
 class Post < ApplicationRecord
 
  has_many :comments
- belongs_to :trainer
  belongs_to :user
  
   # belongs_to :parent, class_name: 'Comment', optional: true

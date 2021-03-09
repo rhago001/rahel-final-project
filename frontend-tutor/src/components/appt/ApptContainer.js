@@ -1,5 +1,7 @@
 import React, {Component} from 'react'
 import Appointment from './Appointment'
+import ApptForm from'../Form/ApptForm'
+
 
 
 class ApptContainer extends Component {
@@ -11,7 +13,7 @@ class ApptContainer extends Component {
   
 
   componentDidMount () {
-    const id= this.props.match.params.id
+    // const id= this.props.match.params.id
     fetch(`http://localhost:3000/tutors`)
     .then( res => res.json())
     .then( data => this.setState({
@@ -20,11 +22,21 @@ class ApptContainer extends Component {
     }))
   }
   
- 
+  // addAppt=() => {
+
+  //   fetch(`http://localhost:3000/tutors`)
+  //   .then( res => res.json())
+  //   .then( data => this.setState({
+  //     tutors: data,
+  //     loaded: true
+  //   }))
+    
+  //    }  
+      
   
   // debugger
   render() {
-    return(
+    return (
       
       <>
       <Appointment appt={this.state.tutors}
@@ -32,7 +44,9 @@ class ApptContainer extends Component {
        tutor={this.state.tutors} 
        user={this.props.user}
        handleClick={this.props.handleClick}
-       />
+     
+       /> 
+       {/* <ApptForm   addAppt={this.addAppt} /> */}
     </>
     )
   }

@@ -5,7 +5,7 @@ class AppointmentsController < ApplicationController
     
   end 
   def show
-    appt=Appointment.find_by(params[:id])
+    appt=Appointment.find(params[:id])
     render json: appt
 
   end 
@@ -22,12 +22,16 @@ class AppointmentsController < ApplicationController
   end 
 
   def update
-    appt=Appointment.find_by(params[:id])
+    appt=Appointment.find(params[:id])
     appt.update(appt_params)
     respond_with appt, json: appt
   end 
 
+  def destroy
+    Appointment.find(params[:id]).destroy
+    # byebug
 
+  end 
  private
 
  def appt_params

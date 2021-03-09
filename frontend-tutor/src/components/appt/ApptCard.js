@@ -27,7 +27,9 @@ class ApptCard extends Component {
                 
                  <img src= {this.props.appt.image }/>
                  <h4>you have appointment with <br />{this.props.appt.name}</h4>
-                 <h5>on: {appoint.date}</h5>
+                 <h5>on: {appoint.date} </h5>
+                 <h5 style={{boarderleft: '20px'}}>at: {appoint.time} </h5>
+                 
 
                 <button class="btnAppt"> 
                     <span  onClick={this.props.handleClick}>
@@ -37,8 +39,8 @@ class ApptCard extends Component {
                 </button>
           
                <button class="btnAppt">
-                <span> 
-                  Delete
+                <span> <i class="fa fa-trash" ></i> 
+                   
                 </span>
                </button>
               </div>

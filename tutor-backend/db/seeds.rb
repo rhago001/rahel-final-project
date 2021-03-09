@@ -8,6 +8,8 @@
 User.destroy_all
 Trainer.destroy_all
 Appointment.destroy_all
+Post.destroy_all
+Comment.destroy_all
 
 user1= User.create(name: "Lala", username: "lala123", email: "lala@gmail.com", password: "123")
 user2= User.create(name: "Jon", username: "Jon123", email: "jon@gmail.com", password: "1234")
@@ -42,3 +44,15 @@ rev1=Review.create(user_id: user1.id, trainer_id: trainer5.id, comment: "Very de
 rev1=Review.create(user_id: user1.id, trainer_id: trainer6.id, comment: "Very details explanantion")
 rev1=Review.create(user_id: user1.id, trainer_id: trainer2.id, comment: "Very details explanantion")
 
+post1=Post.create(user_id: user1.id, post: "What’s the difference between Time and DateTime in Ruby?")
+post2=Post.create(user_id: user2.id, post: "Easy way to do migration in rails?")
+post3=Post.create(user_id: user2.id, post: "I have this errors showing --React inline style - style prop expects a mapping from style properties to values, not a string-")
+post4=Post.create(user_id: user1.id, post: "React error: Style prop value must be an object react/style-prop-object")
+
+com1=Comment.create(trainer_id: trainer2.id, post_id: post1.id, comment: "S6 introduces the spread operator which allows you to expand arrays in place for function calls, array composition, array destructuring, etc.")
+com2=Comment.create(trainer_id: trainer3.id, post_id: post2.id, comment: "This is a database configuration file that connects to a MySQL database running on localhost. It’ll use the root user and password “password.”Modify this for your database.")
+
+
+com3=Comment.create(trainer_id: trainer3.id, post_id: post3.id, comment: "JSX and html are different things and we have a little different syntax to add inline css in jsx I would recommend to go through whole documentation for better understanding")
+com4=Comment.create(trainer_id: trainer1.id, post_id: post4.id, comment: "The style attribute accepts a JavaScript object with camelCased properties(style={{float: 'left'}}) rather than a CSS string. This is consistent with the DOM style JavaScript property, is more efficient, and prevents XSS security holes.")
+com5=Comment.create(trainer_id: trainer2.id, post_id: post1.id, comment: "There may be a couple edge cases that are not handled in this solution (e.g. remove(list, -1)), but you get the general idea.")

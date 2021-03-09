@@ -16,15 +16,23 @@ class ReviewsController < ApplicationController
   end 
 
   def show
-    review=Review.find_by(params[:id])
+    review=Review.find(params[:id])
     render json: review
 
   end 
   
   def update
-    review=Review.find_by(params[:id])
+    review=Review.find(params[:id])
     review.update(review_params)
     respond_with Review, json: review
+  end 
+
+
+  def destroy
+    Review.find(params[:id]).destroy
+    render json: review
+    
+
   end 
 
   private

@@ -11,12 +11,19 @@ class ApptForm extends Component {
    constructor(props) {
     super(props)
     this.state = { 
-      timeofAppt: '',
+      time: '',
        date: "",
-       user_id: ""
+       user_id: "",
+       trainer_id: ""
       }
     this.handleSubmit = this.handleSubmit.bind(this)
   }
+
+        // state = { 
+        // time: '',
+        //  date: "",
+        //  user_id: ""
+        // }
    
 
     changeHandler = (e) => {
@@ -39,7 +46,7 @@ class ApptForm extends Component {
       // console.log(this.state)
       // debugger
       let newAppt = {
-        timeofAppt: this.state.timeofAppt,
+        time: this.state.time,
         user_id: this.props.user.id,
         trainer_id: this.props.match.params.id,
         date: this.state.date
@@ -57,12 +64,10 @@ class ApptForm extends Component {
   fetch("http://localhost:3000/appointments", reqPack)
         .then(res => res.json())
         .then(data => {
-            this.props.addappt(data)
-            e.target.reset()
+          this.props.location.params.addAppt(data)   
+          // e.target.reset()
         }       
         )
-
-
       }
   
   
@@ -82,7 +87,7 @@ class ApptForm extends Component {
          onChange={this.changeHandler} 
          style={{width: '30%'}}
           type="text"
-          name="timeofAppt"
+          name="time"
           placeholder="time"
         />
         <br />

@@ -16,19 +16,19 @@ class PostsController < ApplicationController
   end 
 
   def show
-    post=Post.find_by(params[:id])
+    post=Post.find(params[:id])
     render json: post
 
   end 
   
   def update
-    post=Post.find_by(params[:id])
+    post=Post.find(params[:id])
     post.update(post_params)
     respond_with post, json: post
   end 
 
   private
   def post_params
-    # params.require(:post).permit(:comment, :trainer_id, :user_id)
+    params.require(:post).permit(:post, :user_id)
   end 
 end 

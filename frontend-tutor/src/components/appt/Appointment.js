@@ -13,7 +13,9 @@ class Appointment extends Component {
         handleClick={this.props.handleClick}
          /> )}
 
-
+          <div>
+            {/* <ApptForm addAppt={this.props.addAppt} /> */}
+          </div>
       </div>
     )
   }

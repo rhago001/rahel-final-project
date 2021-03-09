@@ -16,19 +16,19 @@ class CommentsController < ApplicationController
   end 
 
   def show
-    comment=Comment.find_by(params[:id])
+    comment=Comment.find(params[:id])
     render json: comment
 
   end 
   
   def update
-    comment=Comment.find_by(params[:id])
+    comment=Comment.find(params[:id])
     comment.update(comment_params)
     respond_with comment, json: comment
   end 
 
   private
   def comment_params
-    # params.require(:comment).permit(:comment, :trainer_id, :user_id)
+    params.require(:comment).permit(:comment, :trainer_id, :post_id)
   end 
 end 

@@ -24,18 +24,30 @@ class App extends React.Component {
   state ={
     currentUser: null,
     logged_in: false,
-    display: false
+    display: false,
+    loaded:false,
+    tutors:[]
 
   }
 
 
   componentDidMount(){
+    {
     let token= localStorage.getItem("token")
     if(token){
       fetch('http://localhost:3000/profile', {headers: {"Authentication": `Bearer ${token}`}})
       .then( res => res.json())
       .then(user => this.updateCurrentUser(user))
-    }
+    }}
+
+   { fetch(`http://localhost:3000/tutors`)
+    .then( res => res.json())
+    .then( data => this.setState({
+      tutors: data,
+      loaded: true
+    })
+    )
+  }
   }
 
     updateCurrentUser =(user) => {
@@ -52,11 +64,21 @@ class App extends React.Component {
       })
     }
 
-    addAppt=(appt) => {
+  
+   
+      // addAppt=(appt) => {
+      //   console.log(appt)
+      //   this.setState({tutors: [...this.state.tutors.appointments, appt]})
 
-      console.log("am clicked appt",appt)
-       }  
+        // fetch(`http://localhost:3000/tutors`)
+        // .then( res => res.json())
+        // .then( data => this.setState({
+        //   tutors: data,
+        //   loaded: true
+        // }))
         
+        //  }  
+          
 
 
     
@@ -86,10 +108,14 @@ class App extends React.Component {
             <Route exact path="/discussion" render={(routerProps) => < DisComments user={this.state.currentUser}/>}/>
 
             <Route exact path="/tutors/user/schedule" render={(routerProps) => < ApptContainer {...routerProps} 
+            // tutors={this.state.tutors}
+            // loaded={this.state.loaded}
+            // addAppt={this.addAppt}
             handleClick={this.handleClick} user={this.state.currentUser}/>}/>
 
             <Route exact path="/tutors/:id/schedule" render={(routerProps) => < ApptForm {...routerProps} 
-            user={this.state.currentUser} addappt={this.addAppt}/>}/>
+            // addAppt={this.addAppt}
+            user={this.state.currentUser}/>}/>
 
             <Route exact path="/tutors/:id/review" render={(routerProps) => < ReviewForm {...routerProps} 
             user={this.state.currentUser} />}/>

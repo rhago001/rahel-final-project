@@ -27,6 +27,31 @@ class TutorReview extends Component {
         this.setState({tutors: [...this.state.tutors.reviews, rev]})
 
   }
+  addAppt= (appt) => {
+    console.log("review clicked", appt)
+    // debugger
+        this.setState({tutors: [...this.state.tutors.appointments, appt]})
+
+  }
+  
+  
+
+  deleteReview = (review) => {
+    console.log("am clicked delete", review)
+
+    let reqPack={
+        method: "DELETE"
+    }
+
+    fetch(`http://localhost:3000/reviews/${review.id}`, reqPack)
+    .then(res => res.json())
+    .then(data => this.setState({
+      tutors: this.state.tutors.reviews.filter((rev) => rev !== review)}))
+      // tutors: this.state.tutors.
+    
+  }
+
+
   
   // debugger
   render() {
@@ -39,6 +64,8 @@ class TutorReview extends Component {
       user={this.props.user} 
       tutor_id={this.props.match.params.id} 
       addReview={this.addReview}
+      addAppt={this.addAppt}
+      deleteReview={this.deleteReview}
       />
     </>
     )
