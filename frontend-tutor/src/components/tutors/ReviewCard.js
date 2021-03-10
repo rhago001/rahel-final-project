@@ -10,11 +10,13 @@ class ReviewCard extends Component {
 
 
   render() {
+  
     let {deleteReview, review} =this.props
- 
+    console.log(this.props.user)
+    console.log(this.props.review)
     return(
       <>
-     
+    
     <div className="card-deck">
       <br />
       <br />

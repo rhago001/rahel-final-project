@@ -23,13 +23,12 @@ class TutorReview extends Component {
   
   addReview= (rev) => {
     console.log("review clicked", rev)
-    // debugger
+   
         this.setState({tutors: [...this.state.tutors.reviews, rev]})
 
   }
   addAppt= (appt) => {
     console.log("review clicked", appt)
-    // debugger
         this.setState({tutors: [...this.state.tutors.appointments, appt]})
 
   }
@@ -46,19 +45,17 @@ class TutorReview extends Component {
     fetch(`http://localhost:3000/reviews/${review.id}`, reqPack)
     .then(res => res.json())
     .then(data => this.setState({
-      tutors: this.state.tutors.reviews.filter((rev) => rev !== review)}))
+      tutors: {...this.state.tutors, reviews: this.state.tutors.reviews.filter((rev)=> rev !== review)}}))
       // tutors: this.state.tutors.
     
   }
 
 
   
-  // debugger
   render() {
+    console.log(this.state.tutors)
     return(
-      
       <>
-      {/* <ReviewCard /> */}
       <Review review={this.state.tutors.reviews} 
       loaded={this.state.loaded}
       user={this.props.user} 

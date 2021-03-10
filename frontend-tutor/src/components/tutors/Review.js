@@ -8,24 +8,26 @@ class Review extends Component {
 
 
   render() {
-
     return(
         // <>
       <div>
-      {this.props.loaded &&
-       this.props.review.map(review => 
+      {(this.props.loaded && this.props.review)?(this.props.review.map(review => 
        <ReviewCard 
         review={review} 
+    
         user={this.props.user}
         tutor_id={this.props.tutor_id} 
         addReview={this.props.addReview}
         deleteReview={this.props.deleteReview}
 
         
-       /> )}
+       /> )):null
+      }
+      
+       )
 
              
-<button class="btn-review">
+    <button class="btn-review">
           <span>
             {this.props.user ?
           <Link to={{pathname: `/tutors/${this.props.tutor_id}/schedule`,

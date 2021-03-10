@@ -7,7 +7,7 @@ import Login from './components/LogInOut/Login'
 // import Profile from './components/LogInOut/Profile'
 import TutorReview from './components/tutors/TutorReview'
 import MainContainer from './components/tutors/MainContainer';
-import DisComments from './components/Discussion/DisComments'
+import PostContainer from './components/Discussion/PostContainer'
 import ApptForm from './components/Form/ApptForm'
 import EditAppt from './components/Form/EditAppt'
 import ReviewForm from './components/Form/ReviewForm'
@@ -26,7 +26,8 @@ class App extends React.Component {
     logged_in: false,
     display: false,
     loaded:false,
-    tutors:[]
+    tutors:[],
+    posts: []
 
   }
 
@@ -40,15 +41,28 @@ class App extends React.Component {
       .then(user => this.updateCurrentUser(user))
     }}
 
-   { fetch(`http://localhost:3000/tutors`)
+   fetch(`http://localhost:3000/tutors`)
     .then( res => res.json())
     .then( data => this.setState({
       tutors: data,
       loaded: true
     })
     )
+  
+
+     fetch(`http://localhost:3000/posts`)
+    .then( res => res.json())
+    .then( data => this.setState({
+      posts: data,
+      loaded: true
+
+    })
+    )
+
   }
-  }
+
+  
+
 
     updateCurrentUser =(user) => {
       this.setState({
@@ -105,11 +119,12 @@ class App extends React.Component {
             : 
             null
           }
-            <Route exact path="/discussion" render={(routerProps) => < DisComments user={this.state.currentUser}/>}/>
+            <Route exact path="/discussion" render={(routerProps) => < PostContainer {...routerProps} user={this.state.currentUser} posts={this.state.posts}
+              loaded={this.state.loaded}  tutors={this.state.tutors}
+                />}/>
 
             <Route exact path="/tutors/user/schedule" render={(routerProps) => < ApptContainer {...routerProps} 
-            // tutors={this.state.tutors}
-            // loaded={this.state.loaded}
+          
             // addAppt={this.addAppt}
             handleClick={this.handleClick} user={this.state.currentUser}/>}/>
 

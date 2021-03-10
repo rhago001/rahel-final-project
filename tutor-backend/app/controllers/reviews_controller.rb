@@ -29,7 +29,7 @@ class ReviewsController < ApplicationController
 
 
   def destroy
-    Review.find(params[:id]).destroy
+    review=Review.find(params[:id]).destroy
     render json: review
     
 

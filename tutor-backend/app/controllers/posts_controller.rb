@@ -1,7 +1,7 @@
 class PostsController < ApplicationController
 
   def index
-    render json: Post.all.to_json
+    render json: Post.all.to_json(include: [:comments])
     
   end 
 

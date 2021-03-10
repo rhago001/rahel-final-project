@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import { BrowserRouter as Router, Link } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 
 
@@ -83,21 +83,14 @@ class ReviewForm extends Component{
           name="comment"
           placeholder="Review goes here"
         />
-        {/* <br />
-         <input onChange={this.changeHandler}  class="w3-input w3-border w3-animate-input w3-input w3-hover-gray"
-         style={{width: '30%'}}
-          type="date"
-          name="date"
-          placeholder="Date"
-        /> */}
+     
     
-    
-        <button class="btn-appt" type="submit">
-          {/* <span> */}
-          <Link to={`/tutors/${this.props.match.params.id}`} type="submit" name="submit" value="Create New Appt" className="submit">Submit </Link> 
+          <span>
+        <button class="btn-appt" onClick={this.handleSubmit}>
+        <Link to={`/tutors/${this.props.match.params.id}`} type="submit" name="submit" value="Create New Appt" className="submit">Submit </ Link> 
           
-          {/* </span> */}
           </button>
+          </span>
       </form>
       </div>
     )
