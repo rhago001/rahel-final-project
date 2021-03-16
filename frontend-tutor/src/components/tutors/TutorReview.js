@@ -5,7 +5,8 @@ class TutorReview extends Component {
 
   state={
     tutors: [],
-    loaded: false
+    loaded: false,
+    display: false
   }
 
 
@@ -27,6 +28,7 @@ class TutorReview extends Component {
         this.setState({tutors: [...this.state.tutors.reviews, rev]})
 
   }
+
   addAppt= (appt) => {
     console.log("review clicked", appt)
         this.setState({tutors: [...this.state.tutors.appointments, appt]})
@@ -50,12 +52,40 @@ class TutorReview extends Component {
     
   }
 
+  handleReviewEdit =(review) => {
+   
+    console.log("edit clicked", review)
+
+    let newReview={
+      comment: review.comment
+    }
+    console.log(newReview)
+    let reqPack={
+       headers: {"content-type": "application/json"},
+       method: "PATCH",
+       body: JSON.stringify(newReview)
+    }
+    // debugger
+    fetch("http://localhost:3000/reviews/"+ review.id, reqPack)
+    .then(res => res.json())
+    .then(reviewData => {
+      let newArray = {...this.state.tutors, reviews: this.state.tutors.reviews.map(review=>review.id === reviewData.id ? reviewData : review)}
+      
+      this.setState({ 
+        tutors: newArray
+      })
+    }
+    )
+
+  }
+     
+
 
   
   render() {
-    console.log(this.state.tutors)
     return(
-      <>
+      <>    
+
       <Review review={this.state.tutors.reviews} 
       loaded={this.state.loaded}
       user={this.props.user} 
@@ -63,7 +93,11 @@ class TutorReview extends Component {
       addReview={this.addReview}
       addAppt={this.addAppt}
       deleteReview={this.deleteReview}
+      handleReviewEdit={this.handleReviewEdit}
+
+
       />
+      
     </>
     )
   }

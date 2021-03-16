@@ -10,17 +10,13 @@ render(){
 
 
 return(
-
 <>
 
-{this.props.post.comments.map(post => <DisComments postcomment={post} user={this.props.user} post={this.props.post}/>)}
+ {this.props.post.comments.map(post => <DisComments postcomment={post} user={this.props.user} post={this.props.post}/>)}
+ <DisComments user={this.props.user} post={this.props.post}/>
+
 
 </>
-
-
-
-
-
 )
 
 }

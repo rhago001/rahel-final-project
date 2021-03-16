@@ -8,17 +8,16 @@ class PostsController < ApplicationController
   def create
 
     post=Post.create(post_params)
-    if post.save
-      render json: post
-    else
-      render json: {error: "Error, unable to create post"}
-    end 
+    
+      render json: post.to_json(include: [:comments])
+   
   end 
 
-  def show
-    post=Post.find(params[:id])
-    render json: post
 
+
+  def destroy
+    post=Post.find(params[:id]).destroy
+    render json: post
   end 
   
   def update
@@ -29,6 +28,7 @@ class PostsController < ApplicationController
 
   private
   def post_params
-    params.require(:post).permit(:post, :user_id)
+    params.require(:post).permit(:post, :user_id, :name)
+
   end 
 end 

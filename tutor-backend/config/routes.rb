@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   get '/reviews', to: 'reviews#index'
   get '/appointments', to: 'appointments#index'
   get '/appointments/new', to: 'appointments#create'
+  get '/pots/new', to: 'pots#create'
   get '/reviews/new', to: 'reviews#create'
   get '/reviews/:id/edit', to: 'reviews#edit'
   patch '/reviews/:id', to: 'reviews#update'

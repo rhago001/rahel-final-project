@@ -11,6 +11,7 @@ import PostContainer from './components/Discussion/PostContainer'
 import ApptForm from './components/Form/ApptForm'
 import EditAppt from './components/Form/EditAppt'
 import ReviewForm from './components/Form/ReviewForm'
+import EditReview from './components/Form/EditReview'
 import ApptContainer from './components/appt/ApptContainer'
 
 
@@ -62,7 +63,12 @@ class App extends React.Component {
   }
 
   
+  addPost= (post) => {
+    console.log("review clicked", post)
+   
+    this.setState({posts: [...this.state.posts, post]})
 
+  }
 
     updateCurrentUser =(user) => {
       this.setState({
@@ -76,23 +82,7 @@ class App extends React.Component {
       this.setState({
         display: newBoolean
       })
-    }
-
-  
-   
-      // addAppt=(appt) => {
-      //   console.log(appt)
-      //   this.setState({tutors: [...this.state.tutors.appointments, appt]})
-
-        // fetch(`http://localhost:3000/tutors`)
-        // .then( res => res.json())
-        // .then( data => this.setState({
-        //   tutors: data,
-        //   loaded: true
-        // }))
-        
-        //  }  
-          
+    }        
 
 
     
@@ -119,8 +109,11 @@ class App extends React.Component {
             : 
             null
           }
+          <Route exact path="/reviews/:id/edit" render= {(routerprops) => < EditReview handleClick={this.handleClick}/>}/>
+
+
             <Route exact path="/discussion" render={(routerProps) => < PostContainer {...routerProps} user={this.state.currentUser} posts={this.state.posts}
-              loaded={this.state.loaded}  tutors={this.state.tutors}
+              loaded={this.state.loaded}  tutors={this.state.tutors} addPost={this.addPost}
                 />}/>
 
             <Route exact path="/tutors/user/schedule" render={(routerProps) => < ApptContainer {...routerProps} 

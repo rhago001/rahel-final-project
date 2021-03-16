@@ -15,7 +15,7 @@ class TutorsController < ApplicationController
   private
 
   def tutor_params
-    params.required(:tutor).permit(:"name", :"image", :"years_experience", :"flatiron_alum",:"price")
+    params.required(:tutor).permit(:name, :image, :years_experience, :flatiron_alum, :price)
 
   end
 

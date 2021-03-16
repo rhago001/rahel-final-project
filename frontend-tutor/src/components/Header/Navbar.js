@@ -41,7 +41,7 @@ function Navbar(props) {
       <nav className='navbar'>
         <div className='navbar-container'>
           <Link to='/' className='navbar-logo' onClick={closeMobileMenu}>
-            FlatIron Alum Tutors  
+            Flatiron Tutors  
           {/* <p>{"      "}</p> */}
             <i class="fab fa-affiliatetheme"></i>          
         </Link>
@@ -94,7 +94,7 @@ function Navbar(props) {
                 className='nav-links'
                 onClick={closeMobileMenu}
 
-              >Profile
+              >Schedules
                 
               </Link> 
               </li>):null

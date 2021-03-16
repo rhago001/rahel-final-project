@@ -28,8 +28,9 @@ class AppointmentsController < ApplicationController
   end 
 
   def destroy
-    Appointment.find(params[:id]).destroy
-    # byebug
+    appt=Appointment.find(params[:id]).destroy
+    render json: appt
+
 
   end 
  private

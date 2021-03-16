@@ -87,7 +87,7 @@ class ReviewForm extends Component{
     
           <span>
         <button class="btn-appt" onClick={this.handleSubmit}>
-        <Link to={`/tutors/${this.props.match.params.id}`} type="submit" name="submit" value="Create New Appt" className="submit">Submit </ Link> 
+        <Link to={`/tutors/${this.props.match.params.id}`} type="submit" name="submit" value="Create New Appointment" className="submit">Submit </ Link> 
           
           </button>
           </span>

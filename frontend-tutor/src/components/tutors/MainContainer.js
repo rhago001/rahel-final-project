@@ -33,7 +33,7 @@ class MainContainer extends Component {
     return(
 
       <div>
-            <TutorsContainer tutors={this.state.tutors} loaded={this.state.loaded}/>
+            <TutorsContainer tutors={this.state.tutors} loaded={this.state.loaded} />
     </div>
     )
   }

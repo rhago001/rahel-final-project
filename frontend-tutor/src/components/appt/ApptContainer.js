@@ -9,6 +9,8 @@ class ApptContainer extends Component {
   state={
     tutors: [],
     loaded: false
+    
+
   }
   
 
@@ -21,17 +23,33 @@ class ApptContainer extends Component {
       loaded: true
     }))
   }
-  
-  // addAppt=() => {
 
-  //   fetch(`http://localhost:3000/tutors`)
-  //   .then( res => res.json())
-  //   .then( data => this.setState({
-  //     tutors: data,
-  //     loaded: true
-  //   }))
-    
-  //    }  
+  
+  deleteAppt = (selectedAppt) => {
+    console.log("am clicked delete", selectedAppt)
+
+    let reqPack={
+        method: "DELETE"
+    }
+
+    // debugger
+    fetch(`http://localhost:3000/appointments/${selectedAppt.id}`, reqPack)
+    .then(res => res.json())
+    // .then(data => console.log({...this.state.tutors, appointments: this.state.tutors.appointments}))
+    // this.setState({
+    //   tutors: {...this.state.tutors, appointments: this.state.tutors.appointments.filter((appt)=> appt !== selectedAppt)}}))
+
+    .then(data=>{
+      let newTutors = [...this.state.tutors]
+      let x= newTutors.map(tutor=>{
+          return {...tutor, appointments: tutor.appointments.filter(appt=>appt!==selectedAppt)}
+      })
+      this.setState({
+          tutors: x
+      })
+  })
+  
+  }
       
   
   // debugger
@@ -39,11 +57,12 @@ class ApptContainer extends Component {
     return (
       
       <>
-      <Appointment appt={this.state.tutors}
+      <Appointment 
        loaded={this.state.loaded} 
-       tutor={this.state.tutors} 
+       tutors={this.state.tutors} 
        user={this.props.user}
        handleClick={this.props.handleClick}
+       deleteAppt={this.deleteAppt}
      
        /> 
        {/* <ApptForm   addAppt={this.addAppt} /> */}

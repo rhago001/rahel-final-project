@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(version: 2021_03_09_051813) do
 
   create_table "comments", force: :cascade do |t|
     t.integer "trainer_id"
+    t.string "name"
     t.integer "post_id"
     t.string "comment"
     t.datetime "created_at", precision: 6, null: false
@@ -29,6 +30,7 @@ ActiveRecord::Schema.define(version: 2021_03_09_051813) do
 
   create_table "posts", force: :cascade do |t|
     t.integer "user_id"
+    t.string "name"
     t.string "post"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

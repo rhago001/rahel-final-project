@@ -14,11 +14,13 @@ class Review extends Component {
       {(this.props.loaded && this.props.review)?(this.props.review.map(review => 
        <ReviewCard 
         review={review} 
+        handleReviewEdit={this.props.handleReviewEdit}
     
         user={this.props.user}
         tutor_id={this.props.tutor_id} 
         addReview={this.props.addReview}
         deleteReview={this.props.deleteReview}
+        // display={this.props.state.display}
 
         
        /> )):null

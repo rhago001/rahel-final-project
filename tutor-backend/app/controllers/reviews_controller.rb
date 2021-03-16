@@ -24,7 +24,8 @@ class ReviewsController < ApplicationController
   def update
     review=Review.find(params[:id])
     review.update(review_params)
-    respond_with Review, json: review
+    render json: review
+    
   end 
 
 
